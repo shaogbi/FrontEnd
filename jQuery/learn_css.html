@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>test</title>
+<link type="text/css" rel="stylesheet" href="my_style.css"/>
+</head>
+
+<body>
+  <table>
+    <tr>
+      <td>amazon</td>
+      <td>apple</td>
+      <td>facebook</td>
+      <td>google</td>
+    </tr>
+    <tr>
+      <td>amazon</td>
+      <td>apple</td>
+      <td>facebook</td>
+      <td>google</td>
+    </tr>
+    <tr>
+      <td><input type="text" placeholder="User name" autofocus required></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+  </table>
+</body>
+
+<script type="text/javascript" src="../jquery-1.8.2.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  function() {
+    var n1 = new Date();
+    setTimeout(function() {
+      var n2 = new Date();
+      console.log(n2.getTime() - n1.getTime());
+    }, 0);
+  }();
+});
+</script>
