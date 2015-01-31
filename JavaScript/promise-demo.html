@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Promise Demo</title>
+</head>
+<body>
+  <div id="content"></div>
+</body>
+<script>
+var content = document.getElementById("content"),
+  position = "beforeend",
+  cnt = 1;
+
+var appendContent = function(val) {
+  content.insertAdjacentHTML(position, val + ": " + (new Date()) + "<br>");
+}
+
+var promise = new Promise(function(resolve, reject) {
+  appendContent(cnt); // first output
+  cnt++;
+  // make a promise that result will be return after 3s
+  setTimeout(function() {
+    appendContent(cnt); // third output
+    cnt++;
+    resolve(cnt); // after 3s, return result, only return once
+  }, 3000);
+});
+
+promise.then(function(val) {
+  appendContent(val); // fourth output
+}).then(function(val) {
+  appendContent(val); // fifth output, note because of resolve function only return once, "val" displayed as "undefined"
+}).then(function(val) {
+  appendContent(val); // sixth output, note because of resolve function only return once, "val" displayed as "undefined"
+});
+
+appendContent(cnt); // second output
+cnt++;
+</script>
+</html>
+
+<!-- output is:
+1: Sat Jan 31 2015 11:21:09 GMT+0800
+2: Sat Jan 31 2015 11:21:09 GMT+0800
+3: Sat Jan 31 2015 11:21:12 GMT+0800
+4: Sat Jan 31 2015 11:21:12 GMT+0800
+undefined: Sat Jan 31 2015 11:21:12 GMT+0800
+undefined: Sat Jan 31 2015 11:21:12 GMT+0800
+-->
