@@ -1,6 +1,6 @@
 (function($) {
   var Brand = Backbone.Model.extend({
-    urlRoot: "http://www.brandservice.com/brands",
+    urlRoot: "http://www.brandservice.com/brands", // this is a RESTful service
     defaults: {
       brandSource: "Default_Source"
     },
@@ -34,8 +34,8 @@
   console.log(staticBrand.toJSON());
 
   // must use "id":
-  // if use "id", the url will be "http://shaogbi-2.desktop.amazon.com:4333/brands/<your_id>"
-  // if not use "id", the url will be "http://shaogbi-2.desktop.amazon.com:4333/brands"
+  // if use "id", the url will be "http://www.brandservice.com/brands/<your_id>"
+  // if not use "id", the url is still "http://www.brandservice.com/brands"
   var brand = new Brand({id: "bf3edb3435ff4c9fb5b3c765f9f23269"});
   console.log(brand.toJSON());
   // "fetch" is an async call, which is non-blocking
