@@ -129,6 +129,22 @@
       this.brandsField.append(brandView.render().el);
     }
   });
+  
+  // if you want to change URL to "xxx.com/index.html#another", use: BrandRoot.navigate("another");
+  var BrandRoot = Backbone.Router.extend({
+    routes: {
+      "": "initializeBrands",
+      "about/123": "showAbout", // map "xxx.com/index.html#about/123"
+      "*path": "initializeBrands" // map "xxx.com/index.html#<any_string>", this can be regarded as default route
+    },
+    initializeBrands: function(path) {
+      var brandsView = new BrandsView(myBrands);
+    },
+    showAbout: function() {
+      console.log("Show about 123...");
+    }
+  });
 
-  var brandsView = new BrandsView(myBrands);
+  var brandRouter = new BrandRoot();
+  Backbone.history.start({pushState: true});
 })(jQuery);
